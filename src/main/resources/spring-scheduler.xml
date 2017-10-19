@@ -5,7 +5,8 @@
                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"> 
         
         
-        <context:component-scan base-package="job"></context:component-scan>                    
+        <context:component-scan base-package="job"></context:component-scan>
+        <mvc:annotation-driven />                    
          <!-- For times when you just need to invoke a method on a specific object -->  
 	    <bean id="simpleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
 	        <property name="targetObject" ref="myBean" />  

@@ -14,11 +14,21 @@
    <!-- 自动扫描controller,serviceimpl包 -->
   <context:component-scan base-package="controller" />  
   
+  <context:component-scan base-package="service"></context:component-scan>
+  
   <context:component-scan base-package="serviceimpl"></context:component-scan>
   <!-- 启用springmvc注解 -->
   <context:annotation-config></context:annotation-config>
     <!-- 对返回的view页面的解析 -->
-  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:suffix=".jsp" />  
+  <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:suffix=".jsp" /> --> 
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">  
+        <property name="viewClass"  
+            value="org.springframework.web.servlet.view.JstlView" />  
+        <property name="prefix" value="/views/" />  
+        <property name="suffix" value=".jsp" />  
+  </bean>  
+  
+   
   <!-- 配适器 -->
   <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
        <property name="messageConverters">
